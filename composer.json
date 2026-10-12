@@ -7,7 +7,7 @@
         "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "azepo/rgaa-check": "@dev",
+        "azepo/rgaa-check": "^1.0",
         "league/commonmark": "^2.10",
         "masterminds/html5": "^2.11",
         "symfony/console": "7.4.*",
@@ -84,7 +84,7 @@
         }
     },
     "require-dev": {
-        "azepo/rgaa-check-behat": "@dev",
+        "azepo/rgaa-check-behat": "^0.1",
         "behat/behat": "^3.34",
         "behat/mink-browserkit-driver": "^2.3",
         "dmore/behat-chrome-extension": "^1.5",
@@ -99,11 +99,21 @@
     "repositories": [
         {
             "type": "path",
-            "url": "packages/rgaa-check"
+            "url": "packages/rgaa-check",
+            "options": {
+                "versions": {
+                    "azepo/rgaa-check": "1.0.0"
+                }
+            }
         },
         {
             "type": "path",
-            "url": "packages/rgaa-check-behat"
+            "url": "packages/rgaa-check-behat",
+            "options": {
+                "versions": {
+                    "azepo/rgaa-check-behat": "0.1.0"
+                }
+            }
         }
     ],
     "name": "azepo/generateur-site-statique"

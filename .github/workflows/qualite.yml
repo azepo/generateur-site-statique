@@ -1,0 +1,59 @@
+# Contrôles lancés par GitHub à chaque envoi sur main et à chaque pull request :
+# style, analyse statique, tests, puis génération du site d'exemple avec ses contrôles d'accessibilité.
+name: Qualité
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  qualite:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5']
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, mbstring, ctype, iconv
+          coverage: none
+          tools: composer:v2
+
+      - name: Vérifier composer.json
+        run: composer validate --no-check-publish
+
+      - name: Mettre en cache les dépendances
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer
+          key: composer-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ matrix.php }}-
+
+      - name: Installer les dépendances
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Style, analyse statique et tests
+        run: composer qualite
+
+      - name: Générer le site et contrôler son accessibilité
+        run: composer build
+
+      - name: Garder le site généré
+        if: matrix.php == '8.4'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-genere
+          path: dist/
+          retention-days: 7

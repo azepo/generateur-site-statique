@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95e8c923999e2480634d9b661fda9100",
+    "content-hash": "8894af8a7b323cbc8140ca7d3b97eee8",
     "packages": [
         {
             "name": "azepo/rgaa-check",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "dist": {
                 "type": "path",
                 "url": "packages/rgaa-check",
-                "reference": "4616020b4481963f091b4804e369b14d6faeda60"
+                "reference": "a08b02b876911166c8e1006abbde0dd6bba18c8e"
             },
             "require": {
                 "ext-dom": "*",
@@ -3460,11 +3460,11 @@
     "packages-dev": [
         {
             "name": "azepo/rgaa-check-behat",
-            "version": "dev-develop",
+            "version": "0.1.0",
             "dist": {
                 "type": "path",
                 "url": "packages/rgaa-check-behat",
-                "reference": "8cb9ea1171f4f4b6fbcd2ebd76d88e6f8663ac90"
+                "reference": "892f0facdffe063a58e5b05854ca7407599cca6c"
             },
             "require": {
                 "azepo/rgaa-check": "^1.0 || dev-develop || dev-main",
@@ -8688,10 +8688,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "azepo/rgaa-check": 20,
-        "azepo/rgaa-check-behat": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
