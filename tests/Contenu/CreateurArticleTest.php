@@ -31,7 +31,7 @@ final class CreateurArticleTest extends TestCase
                 - { rubrique: articles }
             nouvel_article:
                 publication: "Revue Exemple"
-                url: "https://revue.exemple.org/"
+                url: "https://revue.example.org/"
                 traducteur: "Jon"
             YAML);
         $fichiers->dumpFile($this->dossier.'/content/pages/index.md', "---\ntitre: Accueil\ntype: accueil\nrubrique: general\n---\n");
@@ -85,12 +85,12 @@ final class CreateurArticleTest extends TestCase
 
     public function testSourceWeb(): void
     {
-        $this->creer('Page_Web', 'Titre', url: 'https://blog.exemple.org/2026/article');
+        $this->creer('Page_Web', 'Titre', url: 'https://blog.example.org/2026/article');
 
         $source = $this->chargeur->charger(avecBrouillons: true)->page('Page_Web')->source;
         self::assertNotNull($source);
-        self::assertSame('blog.exemple.org', $source->publication);
-        self::assertSame('https://blog.exemple.org/2026/article', $source->url);
+        self::assertSame('blog.example.org', $source->publication);
+        self::assertSame('https://blog.example.org/2026/article', $source->url);
     }
 
     public function testCopieLePdf(): void
@@ -143,7 +143,7 @@ final class CreateurArticleTest extends TestCase
     public function testRefuseUneAdresseInvalide(): void
     {
         $this->expectExceptionMessage('Adresse de la source invalide');
-        $this->creer('Nouveau', 'Titre', url: 'blog.exemple.org/article');
+        $this->creer('Nouveau', 'Titre', url: 'blog.example.org/article');
     }
 
     private function creer(string $slug, string $titre, string $rubrique = 'articles', ?string $url = null, ?string $pdf = null): string

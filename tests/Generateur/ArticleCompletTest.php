@@ -49,7 +49,7 @@ final class ArticleCompletTest extends KernelTestCase
             chapeau: "Un chapeau d'introduction."
             source:
                 publication: "Revue Exemple"
-                url: "https://revue.exemple.org/"
+                url: "https://revue.example.org/"
             ---
 
             ## Première section {#premiere}

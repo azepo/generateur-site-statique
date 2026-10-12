@@ -19,12 +19,12 @@ final class SiteExempleTest extends TestCase
         $projet = \dirname(__DIR__, 2);
         $site = (new ChargeurSite($projet.'/config/site.yaml', new DepotContenu($projet.'/content')))->charger();
 
-        self::assertSame('https://exemple.org', $site->url);
+        self::assertSame('http://127.0.0.1:8000', $site->url);
         self::assertNull($site->matomo, 'Le site d\'exemple ne charge aucun script de statistiques.');
         $slugs = array_map(static fn (Page $page): string => $page->slug, $site->toutesLesPages());
         sort($slugs);
         self::assertSame(['accessibilite', 'exemple-article', 'index', 'plan_du_site'], $slugs);
-        self::assertSame('https://exemple.org/exemple-article.html', $site->urlDe($site->page('exemple-article')));
+        self::assertSame('http://127.0.0.1:8000/exemple-article.html', $site->urlDe($site->page('exemple-article')));
         self::assertCount(1, $site->menu);
     }
 

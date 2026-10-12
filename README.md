@@ -135,7 +135,7 @@ Le générateur est né pour publier des articles traduits de l'anglais. Le parc
 
 ## Adapter le site
 
-- **Nom, adresse, rubriques, menu** : `config/site.yaml`.
+- **Nom, adresse, rubriques, menu** : `config/site.yaml`. L'adresse du site d'exemple est celle du serveur local, `http://127.0.0.1:8000` : le menu, les liens internes et `sitemap.xml` en dépendent. La remplacer par l'adresse réelle avant la mise en ligne.
 - **Apparence** : `assets/accueil.css` et les gabarits de `templates/`. Toute couleur ajoutée à la feuille de style doit être déclarée dans `src/Controle/Palette.php` avec son contraste : un test échoue sinon.
 - **Statistiques** : section `matomo` de `config/site.yaml`, facultative.
 

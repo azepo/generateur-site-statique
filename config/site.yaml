@@ -2,17 +2,19 @@
 # Les pages ne sont pas déclarées ici : chacune a son fichier dans content/.
 site:
     nom: "Mon site"
-    url: "https://exemple.org"
+    # Adresse du site : le menu, les liens internes et sitemap.xml l'utilisent.
+    # Ici, celle du serveur local (php -S 127.0.0.1:8000 -t dist). La remplacer par l'adresse réelle avant la mise en ligne.
+    url: "http://127.0.0.1:8000"
     annee: 2026
     # Mesure d'audience, facultative. Sans cette section, aucune page ne charge de script de statistiques.
     # matomo:
-    #     url: "//stats.exemple.org/"
+    #     url: "//stats.example.org/"
     #     site_id: 1
 
 # Valeurs proposées par « article:new » pour un article tiré d'un PDF. Toutes sont facultatives.
 # nouvel_article:
 #     publication: "Nom du magazine"
-#     url: "https://magazine.exemple.org/"
+#     url: "https://magazine.example.org/"
 #     traducteur: "Votre nom"
 
 # Rubriques : regroupent les pages dans le menu (liste déroulante), sur l'accueil et dans le plan du site.

@@ -5,7 +5,7 @@ Chaque page du site est un fichier Markdown précédé d'un en-tête YAML.
 - Page simple : `content/pages/<slug>.md`
 - Article : `content/articles/<slug>/index.fr.md` (les images vont dans `content/articles/<slug>/media/`)
 
-Le `<slug>` donne l'adresse de la page : `PHP85` → `https://exemple.org/PHP85.html`.
+Le `<slug>` donne l'adresse de la page : `PHP85` → `https://example.org/PHP85.html`.
 
 Pour voir le résultat : `composer build`, puis ouvrir le fichier dans `dist/`.
 
@@ -27,7 +27,7 @@ chapeau: "Paragraphe d'introduction de l'article."
 modifie: 2026-09-29                # date de dernière modification (sitemap.xml)
 source:
     publication: "La Revue d'exemple"
-    url: "https://revue.exemple.org/"
+    url: "https://revue.example.org/"
     auteur: "Ada Exemple"
     volume: 20
     numero: 2
@@ -43,7 +43,7 @@ Autres clés :
 | Clé | Rôle |
 |---|---|
 | `slug` | Remplace le nom du fichier ou du dossier comme adresse de la page |
-| `titre_page` | Remplace le titre de l'onglet du navigateur (par défaut : « titre – exemple.org ») |
+| `titre_page` | Remplace le titre de l'onglet du navigateur (par défaut : « titre – example.org ») |
 | `plan: false` | La page n'apparaît pas dans le plan du site |
 | `titre_h1` | Titre affiché en tête de page, s'il diffère du `titre` (qui sert au menu, à l'accueil et au plan du site) |
 | `profil` | Habillage du texte : `page`, `article`, `version` (note de version) ou `memo`. Par défaut, il dépend du `type` |
@@ -134,7 +134,7 @@ Un tableau a toujours une légende, déclarée sur la ligne qui le précède. Sa
 {legende="État de la base de données avant la modification"}
 | id | name          | email             |
 |----|---------------|-------------------|
-| 1  | Ada Exemple | ada@exemple.org |
+| 1  | Ada Exemple | ada@example.org |
 ```
 
 ### Passages en anglais
@@ -148,7 +148,7 @@ L'initiative « [Meetup in a Box]{lang=en} » a été lancée.
 ### Liens
 
 ```markdown
-[plan du site](https://exemple.org/plan_du_site.html)
+[plan du site](https://example.org/plan_du_site.html)
 [Manuel PHP](https://www.php.net/manual/fr/)
 ```
 

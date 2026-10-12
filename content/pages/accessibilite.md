@@ -17,7 +17,7 @@ Aucun audit complet de conformité n'a encore été réalisé. Selon les règles
 ## Ce que fait le générateur
 
 - Chaque page commence par un lien « Aller au contenu ».
-- Le menu, l'accueil et le [plan du site](https://exemple.org/plan_du_site.html) sont générés à partir des contenus.
+- Le menu, l'accueil et le [plan du site](http://127.0.0.1:8000/plan_du_site.html) sont générés à partir des contenus.
 - Le code est toujours du texte, jamais une image.
 - Chaque schéma a un texte alternatif et une description à déplier.
 - Les liens qui ouvrent un nouvel onglet l'annoncent.

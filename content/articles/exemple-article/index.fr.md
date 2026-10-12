@@ -12,7 +12,7 @@ chapeau: "Cet article ne parle de rien en particulier : il montre, sur une seule
 # Ici, la publication et les personnes sont fictives.
 source:
     publication: "La Revue d'exemple"
-    url: "https://exemple.org/"
+    url: "https://example.org/"
     auteur: "Ada Exemple"
     volume: 1
     numero: 2

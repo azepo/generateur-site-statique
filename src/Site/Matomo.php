@@ -11,7 +11,7 @@ namespace App\Site;
 final readonly class Matomo
 {
     /**
-     * @param string $url    adresse du serveur Matomo, avec la barre finale : « //stats.exemple.org/ »
+     * @param string $url    adresse du serveur Matomo, avec la barre finale : « //stats.example.org/ »
      * @param string $siteId identifiant du site dans Matomo
      */
     public function __construct(

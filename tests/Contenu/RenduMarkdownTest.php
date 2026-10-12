@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class RenduMarkdownTest extends TestCase
 {
-    private const string HOTE = 'exemple.org';
+    private const string HOTE = 'example.org';
 
     // --- Titres ---------------------------------------------------------------------------------
 
@@ -285,8 +285,8 @@ final class RenduMarkdownTest extends TestCase
     public function testUnLienInterneOuUneAncreResteInchange(): void
     {
         self::assertSame(
-            '<p><a href="https://exemple.org/plan_du_site.html">plan</a>, <a href="#variables">ancre</a>, <a href="PHP81.html">relatif</a></p>'."\n",
-            $this->html('[plan](https://exemple.org/plan_du_site.html), [ancre](#variables), [relatif](PHP81.html)', ProfilRendu::Page),
+            '<p><a href="https://example.org/plan_du_site.html">plan</a>, <a href="#variables">ancre</a>, <a href="PHP81.html">relatif</a></p>'."\n",
+            $this->html('[plan](https://example.org/plan_du_site.html), [ancre](#variables), [relatif](PHP81.html)', ProfilRendu::Page),
         );
     }
 
