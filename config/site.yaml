@@ -1,0 +1,35 @@
+# Réglages du site, rubriques et ordre du menu.
+# Les pages ne sont pas déclarées ici : chacune a son fichier dans content/.
+site:
+    nom: "Mon site"
+    url: "https://exemple.org"
+    annee: 2026
+    # Mesure d'audience, facultative. Sans cette section, aucune page ne charge de script de statistiques.
+    # matomo:
+    #     url: "//stats.exemple.org/"
+    #     site_id: 1
+
+# Valeurs proposées par « article:new » pour un article tiré d'un PDF. Toutes sont facultatives.
+# nouvel_article:
+#     publication: "Nom du magazine"
+#     url: "https://magazine.exemple.org/"
+#     traducteur: "Votre nom"
+
+# Rubriques : regroupent les pages dans le menu (liste déroulante), sur l'accueil et dans le plan du site.
+#   titre_plan     : titre de la rubrique dans le plan du site et sur l'accueil
+#   titre_menu     : libellé de la liste déroulante du menu
+#   id_menu        : identifiant HTML de la liste déroulante
+#   intro_accueil  : phrase affichée sous le titre de la rubrique sur l'accueil
+rubriques:
+    general:
+        titre_plan: "Général"
+    articles:
+        titre_menu: "Articles"
+        titre_plan: "Articles"
+        id_menu: articlesNavbarDropdown
+        intro_accueil: "Les articles du site :"
+
+# Ordre des entrées du menu principal et de l'accueil :
+# une page (lien direct) ou une rubrique (liste déroulante).
+menu:
+    - { rubrique: articles }

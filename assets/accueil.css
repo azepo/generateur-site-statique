@@ -1,0 +1,510 @@
+#nord {
+    width: 100%;
+    border-bottom: thin solid purple;
+}
+
+#nord h2 {
+    text-align: center;
+    color: purple;
+}
+
+#center {
+    margin: auto;
+    padding: 15px;
+}
+
+.word {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-top: 15px;
+}
+
+/* Anciens <p> devenus <div> parce qu'ils contenaient des blocs (listes, code) :
+   on reproduit les marges qu'avait le paragraphe */
+.paragraphe {
+    margin-bottom: 1rem;
+}
+
+.paragraphe > ul,
+.paragraphe > .row,
+.paragraphe > .align-center {
+    margin-top: 1rem;
+}
+
+/* #C00000 sur blanc = 6,48:1 : lisible quelle que soit la taille du texte */
+#center .title {
+    color: #C00000;
+}
+
+/* Chapeau d'article : paragraphe d'introduction, même rendu qu'un h3 Bootstrap.
+   Rouge #C00000 = 6,48:1 sur blanc, conforme à toutes les tailles. */
+.chapeau {
+    font-size: calc(1.3rem + .6vw);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    color: #C00000;
+}
+
+@media (min-width: 1200px) {
+    .chapeau {
+        font-size: 1.75rem;
+    }
+}
+
+#sud {
+    width: 100%;
+    height: 10%;
+    color: purple;
+    border-top: thin solid purple;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.tobecontinued {
+    color: purple;
+    size: 50px; 
+}
+
+.strong-font-size {
+    font-size: larger;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.bg-memo {
+    background-color: black;
+}
+
+#sommaire {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 15em;
+    margin-top: -2.5em;
+    border-top: thin solid purple;
+    border-left: thin solid purple;
+    border-bottom: thin solid purple;
+    padding-left: 7px;
+    z-index: 1;
+    background-color: purple;
+    display: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#sommaire .title {
+    color: white;
+    cursor: pointer;
+}
+
+#sommaire .puce {
+    list-style-type: circle;
+    color: white !important;
+}
+
+a {
+	color: #0051A8 !important;
+}
+
+a:hover {
+    color: purple !important;
+}
+
+#sommaire a {
+    color: white !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#sommaire a:hover {
+    color: white !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#sommaire_titre {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 2em;
+    margin-top: -2.5em;
+    border-top: thin solid purple;
+    border-left: thin solid purple;
+    border-bottom: thin solid purple;
+    padding-left: 7px;
+    z-index: 1;
+    background-color: purple;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    cursor: pointer;
+}
+
+#sommaire_titre .title {
+    color: white;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.red {
+	color: #88603d;
+}
+
+.green {
+	color: green;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.text-indent {
+    padding-left: 15px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+/* #0593FF = 3,17:1 sur blanc : suffisant uniquement pour du grand texte, d'où la taille fixée à 24px */
+.accueil-item {
+    color: #0593FF;
+}
+
+/* h2 : plus spécifique que la classe .h4 de Bootstrap, chargée après ce fichier */
+h2.accueil-item {
+    font-size: 1.5rem;
+}
+
+/** memo */
+/* Sommaire du mémo : liste de liens d'ancre, collée sur le côté en grand écran, en haut de page sinon.
+   Contrastes : #0051A8 sur blanc = 7,66:1 ; blanc sur #0051A8 = 7,66:1 ; #0051A8 sur #e7f1ff = 6,72:1 */
+.memo-sommaire {
+    background-color: white;
+    padding: .75rem 0;
+}
+
+.memo-sommaire-titre {
+    font-weight: 500;
+    color: #1f2328;
+    padding: 0 1rem;
+    margin-bottom: .5rem;
+}
+
+.memo-sommaire ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: .875rem;
+}
+
+.memo-sommaire .nav-link {
+    display: block;
+    padding: .35rem 1rem;
+    text-decoration: none;
+}
+
+.memo-sommaire .nav-link:hover,
+.memo-sommaire .nav-link:focus {
+    background-color: #e7f1ff;
+    color: #0051A8 !important;
+    text-decoration: underline;
+}
+
+.memo-sommaire .nav-link.active {
+    background-color: #0051A8;
+    color: white !important;
+}
+
+/* Sélecteurs renforcés : Bootstrap (.row > *, .col-lg-auto) est chargé après ce fichier,
+   et .bg-black remet la marge à 0 plus bas */
+.row > .memo-contenu {
+    padding-left: 12px;
+}
+
+@media (min-width: 992px) {
+    #sommaire-memo {
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+        width: 13rem;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    /* Espace entre le sommaire et le contenu */
+    .row > .memo-contenu {
+        margin-left: 1.5rem;
+    }
+}
+
+.bg-black {
+    background-color: rgb(17, 29, 29);
+    color: whitesmoke;
+    margin: 0;
+}
+
+.padding-left-12 {
+    padding-left: 12px; 
+}
+
+.code {
+    color: whitesmoke;
+}
+
+.titre {
+    color: springgreen;
+    font-size: 0.9em;
+}
+
+.soustitre {
+    color: springgreen;
+}
+
+.color-title {
+    color: springgreen;
+}
+
+.commentaire {
+    color: wheat;
+}
+
+/* Blocs de code des articles (remplacent les anciennes images de code)
+   Contrastes : #1f2328 sur #f6f8fa = 15:1 ; blanc sur #0051A8 = 7,66:1 */
+figure.listing {
+    margin: 1rem 0;
+    border: 1px solid #0051A8;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+figure.listing figcaption {
+    background-color: #0051A8;
+    color: white;
+    padding: .25rem .75rem;
+    font-weight: 500;
+}
+
+figure.listing pre,
+pre.listing {
+    margin: 0;
+    padding: .75rem 1rem;
+    background-color: #f6f8fa;
+    color: #1f2328;
+    font-size: .875em;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+pre.listing {
+    margin: 1rem 0;
+    border-left: 4px solid #0051A8;
+}
+
+.diff-suppr {
+    background-color: #ffe0e0;
+}
+
+.diff-ajout {
+    background-color: #dcf5e3;
+}
+
+/* Schémas conservés en image, avec description dépliable */
+figure.schema {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+figure.schema img {
+    max-width: 100%;
+    height: auto;
+}
+
+figure.schema details {
+    text-align: left;
+    margin-top: .5rem;
+}
+
+table.donnees caption {
+    caption-side: top;
+    color: #1f2328;
+}
+
+/* Mémo PHP : titres, paragraphes et blocs de code gardent l'aspect "fichier de code" */
+.memo {
+    font-family: var(--bs-font-monospace);
+    color: whitesmoke;
+    padding-bottom: 1rem;
+}
+
+.memo h2.titre,
+.memo h3.sous-titre {
+    font-family: inherit;
+    color: springgreen;
+}
+
+.memo h2.titre {
+    font-size: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.memo h3.sous-titre {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+.memo p {
+    margin-bottom: 0.75rem;
+}
+
+.memo pre {
+    color: whitesmoke;
+    font-size: 1em;
+    white-space: pre-wrap;
+}
+
+.memo pre code,
+.memo p code {
+    color: inherit;
+    font-size: inherit;
+}
+
+.titre_menu {
+    background-color: rgb(17, 29, 29);
+    color: white;
+	font-size: medium;
+}
+
+#note {
+	float: right;
+	background-color: white;
+	color: rgb(17, 29, 29);
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* Souligné : le bleu seul ne se distingue pas assez du texte blanc du mémo (2,91:1 < 3:1) */
+.lien {
+	color: rgb(5, 147, 255) !important;
+	text-decoration: underline;
+}
+
+.font-size-12em {
+    font-size: 1.0em;
+}
+
+/* Contrastes : #0051A8 sur #e7f1ff = 6,72:1 ; blanc sur #0051A8 = 7,66:1 */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #e7f1ff !important;
+    color: #0051A8 !important;
+    text-decoration: underline;
+}
+
+.dropdown-item.active,
+.dropdown-item.active:hover,
+.dropdown-item.active:focus,
+.dropdown-item:active {
+    background-color: #0051A8 !important;
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 81, 168)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")  !important;
+}
+
+/* Lien d'évitement : visible uniquement au focus clavier */
+.lien-evitement:focus {
+    display: inline-block;
+    margin: 8px;
+    padding: 8px 16px;
+    background-color: white;
+    color: #0051A8 !important;
+    border: 2px solid #0051A8;
+    position: relative;
+    z-index: 1000;
+}
+
+.code-function {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.linebreak::after {
+    content: "";
+    display: block;
+}
+
+.inline{
+    display: inline-block;
+    width: 100%;
+}
+
+.margin-top-25 {
+    margin-top: 25px;
+}
+
+.double-image {
+    width: 75%;
+    height: 65%;
+}
+
+.image-38perc {
+    width: 38%;
+    height: auto;
+}
+
+/* Affichage à 320 px (zoom 400 %) : pas de défilement horizontal */
+main img {
+    max-width: 100%;
+    height: auto;
+}
+
+main {
+    overflow-wrap: break-word;
+}
+
+/* Pages générées : espace au-dessus de chaque section d'une note de version.
+   Reproduit le <section class="margin-top-20"> des pages écrites à la main. */
+.corps-version > h2 {
+    margin-top: 20px;
+}
+
+/* Pages générées avec « paragraphes: justifies » : pas d'espace supplémentaire entre un titre et son premier paragraphe. */
+.paragraphes-justifies > h2 + p.word,
+.paragraphes-justifies > h3 + p.word {
+    margin-top: 0;
+}
+
+/* Ces pages n'avaient pas de <section> autour de chaque titre : marge d'un paragraphe, pas 20 px. */
+.corps-version.paragraphes-justifies > h2 {
+    margin-top: 1rem;
+}
+
+/* Articles générés : sur grand écran, un bloc de code occupe la moitié de la largeur du texte,
+   comme une colonne de magazine. Les listings placés côte à côte gardent leur propre mise en page. */
+@media (min-width: 992px) {
+    .corps-article > figure.listing,
+    .corps-article > pre.listing {
+        max-width: 50%;
+    }
+}
+
+/* Mémo : la page est noire, mais son pied de page garde un fond blanc, comme son en-tête.
+   Sans cela, le texte violet (2,23:1) et les liens bleus (2,74:1) seraient illisibles sur noir.
+   Contrastes sur blanc : violet = 9,42:1 ; #0051A8 = 7,66:1 */
+.bg-memo #sud {
+    background-color: white;
+}

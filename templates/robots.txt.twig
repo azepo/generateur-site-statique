@@ -1,0 +1,9 @@
+{% autoescape false %}
+User-agent: *
+
+{% for p in site.toutesLesPages %}
+Allow: /{{ p.fichier }}
+{% endfor %}
+
+Sitemap: {{ site.url }}/sitemap.xml
+{% endautoescape %}

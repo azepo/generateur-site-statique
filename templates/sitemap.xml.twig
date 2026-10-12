@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for p in site.toutesLesPages %}
+  <url>
+    <loc>{{ site.urlDe(p) }}</loc>
+{% if p.modifie %}
+    <lastmod>{{ p.modifie|date('Y-m-d', false) }}</lastmod>
+{% endif %}
+  </url>
+{% endfor %}
+</urlset>

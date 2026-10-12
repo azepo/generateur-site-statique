@@ -1,0 +1,46 @@
+# Services du générateur de site statique.
+parameters:
+    # Réglages du site, rubriques et menu
+    app.fichier_site: '%kernel.project_dir%/config/site.yaml'
+    # Contenus : un fichier Markdown par page
+    app.dossier_contenu: '%kernel.project_dir%/content'
+    # Fichiers statiques (CSS, JavaScript)
+    app.dossier_assets: '%kernel.project_dir%/assets'
+    # Dossier du site généré : c'est son contenu qui est publié
+    app.dossier_dist: '%kernel.project_dir%/dist'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+
+    # Règles d'accessibilité du paquet azepo/rgaa-check
+    Azepo\RgaaCheck\Checker:
+        factory: ['Azepo\RgaaCheck\Checker', 'withDefaultRules']
+
+    App\Contenu\DepotContenu:
+        arguments:
+            $dossierContenu: '%app.dossier_contenu%'
+
+    App\Site\ChargeurSite:
+        arguments:
+            $fichierSite: '%app.fichier_site%'
+
+    App\Contenu\CreateurArticle:
+        arguments:
+            $dossierContenu: '%app.dossier_contenu%'
+
+    App\Generateur\Assets:
+        arguments:
+            $dossierAssets: '%app.dossier_assets%'
+
+    App\Generateur\Medias:
+        arguments:
+            $dossierContenu: '%app.dossier_contenu%'
+
+    App\Generateur\GenerateurSite:
+        arguments:
+            $dossierDist: '%app.dossier_dist%'

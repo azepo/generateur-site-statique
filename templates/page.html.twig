@@ -1,0 +1,9 @@
+{# Page simple : un titre et un texte écrit en Markdown. #}
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+      <div class="col-12">
+        <h1 class="h2 mt-3">{% if page.titreLang %}<span lang="{{ page.titreLang }}">{{ page.titre }}</span>{% else %}{{ page.titre }}{% endif %}</h1>
+        {{ contenu|raw }}
+      </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+      <div class="col-12">
+        <h1 class="h2 mt-3">{{ page.titre }}</h1>
+        {% for section in site.plan %}
+        <h2 class="h4 margin-top-25">{{ section.rubrique.titrePlan }}</h2>
+        <ul>
+          {% for p in section.pages %}
+            <li><a href="{{ site.urlDe(p) }}">{% if p.titreLang %}<span lang="{{ p.titreLang }}">{{ p.titre }}</span>{% else %}{{ p.titre }}{% endif %}</a></li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+{% endblock %}

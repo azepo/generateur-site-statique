@@ -1,0 +1,36 @@
+{#
+  Article ou note de version : titre, source, signature, chapeau, puis le texte en Markdown.
+  Les classes « corps-<profil> » et « paragraphes-<style> » permettent à accueil.css d'espacer
+  les sections et les paragraphes selon la famille de pages.
+#}
+{% extends 'base.html.twig' %}
+
+{% block classe_pied %}{% endblock %}
+
+{% block contenu %}
+      {% set source = page.source %}
+      {% set traduction = page.traduction %}
+      {% set langue = page.langueDuTitrePrincipal %}
+      <article>
+        <div class="row">
+          <div id="center" class="col corps-{{ page.profilRendu.value }} paragraphes-{{ page.paragraphes.value }}">
+            <h1 class="h2 title" id="titre">
+              {%- if langue %}<span lang="{{ langue }}">{{ page.titrePrincipal }}</span>{% else %}{{ page.titrePrincipal }}{% endif -%}
+              {%- if source and source.url %} <a href="{{ source.url }}" target="_blank" rel="noopener" aria-label="{{ source.publication|markdown_ligne|striptags }} – ouvre dans une nouvelle fenêtre (onglet)">{{ source.publication|markdown_ligne }}</a>{% endif -%}
+            </h1>
+            {% if source and (source.reference or source.auteur) %}
+            <p>
+              {%- if source.reference %}{{ source.reference }}{% endif -%}
+              {%- if source.date %} ({{ source.date }}){% endif -%}
+              {%- if source.auteur %} par <strong>{{ source.auteur }}</strong>{% endif -%}
+              {%- if source.auteurNote %} - {{ source.auteurNote }}{% endif -%}
+              {%- if traduction and traduction.traducteur %} / Traduit par <i>{{ traduction.traducteur }}</i>{% endif -%}
+              {%- if traduction and traduction.relecteur %}, relecture et correction par {% if traduction.relecteurUrl %}<a href="{{ traduction.relecteurUrl }}" target="_blank" rel="noopener" aria-label="{{ traduction.relecteur }} – ouvre dans une nouvelle fenêtre (onglet)"><i>{{ traduction.relecteur }}</i></a>{% else %}<i>{{ traduction.relecteur }}</i>{% endif %}{% endif -%}
+            </p>
+            {% endif %}
+            {% if page.chapeau %}<p class="chapeau word">{{ page.chapeau }}</p>{% endif %}
+            {{ contenu|raw }}
+          </div>
+        </div>
+      </article>
+{% endblock %}

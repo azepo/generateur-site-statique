@@ -1,0 +1,26 @@
+# Contrôles d'accessibilité du site généré, dans un navigateur.
+# Voir packages/rgaa-check-behat/README.md pour les étapes disponibles.
+#
+#   composer build
+#   php -S 127.0.0.1:8000 -t dist
+#   chromium --headless=new --remote-debugging-port=9222 --no-sandbox
+#   vendor/bin/behat
+default:
+    suites:
+        default:
+            paths: ['%paths.base%/features']
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Azepo\RgaaCheckBehat\RgaaContext
+                - Azepo\RgaaCheckBehat\RgaaBrowserContext
+    extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+        Behat\MinkExtension:
+            base_url: 'http://127.0.0.1:8000'
+            browser_name: chrome
+            default_session: chrome
+            javascript_session: chrome
+            sessions:
+                chrome:
+                    chrome:
+                        api_url: 'http://127.0.0.1:9222'

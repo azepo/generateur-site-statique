@@ -1,0 +1,11 @@
+parameters:
+    level: 10
+    paths:
+        - src
+        - tests
+        - packages/rgaa-check/src
+        - packages/rgaa-check/tests
+        - packages/rgaa-check-behat/src
+        - packages/rgaa-check-behat/tests
+    excludePaths:
+        - tests/bootstrap.php

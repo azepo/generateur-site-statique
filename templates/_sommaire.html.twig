@@ -1,0 +1,20 @@
+{#
+  Sommaire d'une longue page : liens d'ancre vers les titres qui portent un identifiant.
+  Variables :
+    titres   liste de App\Contenu\Titre (en général rendu.titresDeNiveau(2))
+    id       identifiant HTML du sommaire
+    libelle  nom du sommaire pour les lecteurs d'écran (aria-label)
+    classes  classes CSS du <nav> (facultatif)
+    premier  première entrée ajoutée avant les titres : { id, libelle } (facultatif)
+#}
+<nav id="{{ id }}"{% if classes|default('') %} class="{{ classes }}"{% endif %} aria-label="{{ libelle }}">
+  <p class="memo-sommaire-titre" aria-hidden="true">Sommaire</p>
+  <ul>
+    {% if premier is defined and premier %}
+    <li><a class="nav-link" href="#{{ premier.id }}">{{ premier.libelle }}</a></li>
+    {% endif %}
+    {% for titre in titres %}
+    <li><a class="nav-link" href="#{{ titre.id }}">{{ titre.libelle }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>

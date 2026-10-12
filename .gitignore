@@ -1,0 +1,11 @@
+/vendor/
+/var/
+/dist/
+/public/bundles/
+/.env.local
+/.env.local.php
+/.env.*.local
+/.phpunit.cache/
+/.php-cs-fixer.cache
+# PDF d'origine des articles à traduire : document d'un tiers, à ne pas diffuser avec le dépôt
+/content/articles/*/source.pdf

@@ -1,0 +1,33 @@
+{#
+  Accueil : suit l'ordre du menu. Une page du menu donne un titre-lien et son résumé ;
+  une rubrique donne son titre, sa phrase d'introduction et la liste de ses pages.
+#}
+{% extends 'base.html.twig' %}
+
+{% macro lien(site, p) -%}
+  <a href="{{ site.urlDe(p) }}">{% if p.titreLang %}<span lang="{{ p.titreLang }}">{{ p.titre }}</span>{% else %}{{ p.titre }}{% endif %}</a>
+{%- endmacro %}
+
+{% block contenu %}
+      <div class="col-12">
+        <p class="h3">{{ page.donnee('accroche') }}</p>
+        <p class="h4 margin-top-25">{{ page.donnee('introduction') }}</p>
+
+        {% for entree in site.menu %}
+          {% if entree.estListe %}
+        <h2 class="h4 accueil-item{% if loop.first %} margin-top-25{% endif %}">{{ entree.rubrique.titrePlan }}</h2>
+          {% if entree.rubrique.introAccueil %}<p>{{ entree.rubrique.introAccueil }}</p>{% endif %}
+          <div class="paragraphe">
+            <ul>
+              {% for p in entree.pages %}
+              <li><span class="strong-font-size text-indent">{{ _self.lien(site, p) }}</span>{% if p.resume %} : {{ p.resume }}{% endif %}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% else %}
+        <h2 class="h4 accueil-item{% if loop.first %} margin-top-25{% endif %}">{{ _self.lien(site, entree.page) }}</h2>
+          {% if entree.page.resume %}<p>{{ entree.page.resume }}</p>{% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+{% endblock %}

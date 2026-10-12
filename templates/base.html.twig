@@ -1,0 +1,85 @@
+{#
+  Gabarit commun à toutes les pages.
+  Variables : site (App\Site\Site), page (App\Site\Page, la page en cours).
+  Blocs : title, scripts, attributs_body, contenu, classe_pied.
+#}
+{% macro titre_page(p) -%}
+  {%- if p.titreLang %}<span lang="{{ p.titreLang }}">{{ p.libelleMenu }}</span>{% else %}{{ p.libelleMenu }}{% endif -%}
+{%- endmacro %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>{% block title %}{{ site.titreOnglet(page) }}{% endblock %}</title>
+  <meta name="description" content="{{ page.description }}">
+  <meta name="keywords" content="{{ page.motsCles }}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {# accueil.css est chargé AVANT Bootstrap : ses sélecteurs sont écrits pour cet ordre #}
+  <link rel="stylesheet" href="{{ asset_site('accueil.css') }}">
+  <link rel="stylesheet" href="{{ asset_site('bootstrap/bootstrap.min.css') }}">
+  <script src="{{ asset_site('bootstrap/bootstrap.bundle.min.js') }}"></script>
+  {% block scripts %}{% endblock %}
+  {% if site.matomo %}
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+    var u="{{ site.matomo.url|e('js') }}";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '{{ site.matomo.siteId|e('js') }}']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+  {% endif %}
+</head>
+<body{% block attributs_body %}{% endblock %}>
+  <a href="#contenu" class="visually-hidden-focusable lien-evitement">Aller au contenu</a>
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ site.url }}"{% if page.estAccueil %} aria-current="page"{% endif %}>
+            {% if page.estAccueil %}<h1>{{ site.nom }}</h1>{% else %}<span class="h1 d-block">{{ site.nom }}</span>{% endif %}
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% for entree in site.menu %}
+                {% if entree.estListe %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="{{ entree.rubrique.idMenu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ entree.rubrique.titreMenu }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="{{ entree.rubrique.idMenu }}">
+                  {% for p in entree.pages %}
+                  <li><a class="dropdown-item{% if p.slug == page.slug %} active{% endif %}"{% if p.slug == page.slug %} aria-current="page"{% endif %} href="{{ site.urlDe(p) }}">{{ _self.titre_page(p) }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+                {% else %}
+              <li class="nav-item">
+                <a class="nav-link{% if entree.page.slug == page.slug %} active{% endif %}"{% if entree.page.slug == page.slug %} aria-current="page"{% endif %} href="{{ site.urlDe(entree.page) }}">{{ _self.titre_page(entree.page) }}</a>
+              </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="contenu" tabindex="-1">
+      {% block contenu %}{% endblock %}
+    </main>
+    <footer id="sud"{% block classe_pied %} class="margin-top-25"{% endblock %}>
+      <p class="text-center">{{ site.annee }} · <a href="{{ site.urlDe(site.page('plan_du_site')) }}"{% if page.slug == 'plan_du_site' %} aria-current="page"{% endif %}>Plan du site</a> · <a href="{{ site.urlDe(site.page('accessibilite')) }}"{% if page.slug == 'accessibilite' %} aria-current="page"{% endif %}>Accessibilité</a></p>
+    </footer>
+  </div>
+</body>
+</html>

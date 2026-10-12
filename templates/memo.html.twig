@@ -1,0 +1,30 @@
+{#
+  Mémo : longue page de code sur fond sombre, avec un sommaire sur le côté (en haut de page sur petit écran).
+  Le sommaire liste les titres qui portent un identifiant : « ## Titre {#id sommaire="Libellé court"} ».
+  Sans JavaScript, le sommaire reste une liste de liens d'ancre ; ScrollSpy ne fait que surligner la section visible.
+#}
+{% extends 'base.html.twig' %}
+
+{% block scripts %}<script src="{{ asset_site('memo.js') }}" defer></script>{% endblock %}
+
+{% block attributs_body %} class="bg-memo" data-bs-spy="scroll" data-bs-target="#sommaire-memo" data-bs-root-margin="0px 0px -60%"{% endblock %}
+
+{% block classe_pied %}{% endblock %}
+
+{% block contenu %}
+      <div class="row g-0">
+        {{ include('_sommaire.html.twig', {
+          titres: titres|filter(titre => titre.niveau == 2),
+          id: 'sommaire-memo',
+          libelle: 'Sommaire du mémo',
+          classes: 'col-12 col-lg-auto memo-sommaire',
+          premier: { id: 'introduction', libelle: 'Introduction' },
+        }) }}
+        <div class="col-12 col-lg bg-black padding-left-12 memo-contenu">
+          <h1 id="introduction" class="color-title">{% if page.langueDuTitrePrincipal %}<span lang="{{ page.langueDuTitrePrincipal }}">{{ page.titrePrincipal }}</span>{% else %}{{ page.titrePrincipal }}{% endif %}</h1>
+          <div class="memo">
+            {{ contenu|raw }}
+          </div>
+        </div>
+      </div>
+{% endblock %}

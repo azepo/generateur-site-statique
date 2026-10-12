@@ -1,0 +1,68 @@
+# Glossaire de traduction EN → FR, utilisé par la commande Claude Code /traduire-article.
+# Établi à partir des articles déjà traduits du site. À compléter au fil des relectures :
+# quand un terme est corrigé à la relecture, l'ajouter ici pour que la traduction suivante le respecte.
+
+# Termes gardés en anglais dans le texte français, sans balisage de langue :
+# ce sont des termes techniques d'usage courant chez les développeurs francophones.
+conserver:
+    - framework
+    - backend
+    - frontend
+    - open source
+    - worker
+    - middleware
+    - namespace
+    - listing
+    - cache
+    - pull request
+    - merge request
+    - commit
+    - event sourcing
+    - CQRS
+    - closure
+    - design pattern
+    - devops
+    - API
+    - email
+
+# Traductions imposées : terme anglais => terme français.
+traduire:
+    attribute: attribut
+    database: base de données
+    query: requête
+    request: requête
+    event: évènement
+    library: bibliothèque
+    source code: code source
+    deployment: déploiement
+    command line: ligne de commande
+    strict types: types stricts
+    technical debt: dette technique
+    best practices: bonnes pratiques
+    stakeholder: partie prenante
+    screen reader: lecteur d'écran
+    alternative text: texte alternatif
+    string: chaîne de caractères
+    array: tableau
+    browser: navigateur
+    container: conteneur
+    release: version
+    maintainer: mainteneur
+    executive director: directrice générale / directeur général
+    foundation: fondation
+
+# Jamais traduits ni modifiés.
+intouchable:
+    - "le code des listings, y compris ses commentaires"
+    - "les noms de classes, de fonctions, de variables, de fichiers et de commandes"
+    - "les URL"
+    - "les noms propres (personnes, produits, sociétés, conférences)"
+    - "les titres d'ouvrages, d'émissions et d'articles cités : ils restent en anglais, balisés [Titre]{lang=en}"
+
+# Typographie française.
+typographie:
+    - "guillemets français « … » avec espaces à l'intérieur, à la place de \"…\""
+    - "espace avant « : », « ; », « ? » et « ! »"
+    - "pas de majuscule à chaque mot dans les titres - seulement au premier mot et aux noms propres"
+    - "nombres - virgule décimale et espace pour les milliers (1 500,5), sauf dans le code"
+    - "vouvoiement du lecteur"
